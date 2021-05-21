@@ -1,19 +1,19 @@
 metric: COCO
-num_classes: 80
+num_classes: 3 # 将其修改为数据集的类别，不包含背景类
 
 TrainDataset:
   !COCODataSet
-    image_dir: train2017
-    anno_path: annotations/instances_train2017.json
-    dataset_dir: dataset/coco
+    image_dir: train # 训练集的图片所在文件相对于dataset_dir的路径
+    anno_path: annotations/train.json # 训练集的标注文件相对于dataset_dir的路径
+    dataset_dir: dataset/camera #数据集所在路径
     data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
 
 EvalDataset:
   !COCODataSet
-    image_dir: val2017
-    anno_path: annotations/instances_val2017.json
-    dataset_dir: dataset/coco
+    image_dir: val # 验证集的图片所在文件相对于dataset_dir的路径
+    anno_path: annotations/image_info_val.json # 验证集的标注文件相对于dataset_dir的路径
+    dataset_dir: dataset/camera #数据集所在路径
 
 TestDataset:
   !ImageFolder
-    anno_path: annotations/instances_val2017.json
+    anno_path: dataset/camera/annotations/image_info_val.json
