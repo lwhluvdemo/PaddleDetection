@@ -39,7 +39,7 @@ YOLOv3Head:
 YOLOv3Loss:
   ignore_thresh: 0.7
   downsample: [32, 16, 8]
-  label_smooth: false
+  label_smooth: true
   scale_x_y: 1.05
   iou_loss: IouLoss
   iou_aware_loss: IouAwareLoss
@@ -50,6 +50,8 @@ IouLoss:
 
 IouAwareLoss:
   loss_weight: 1.0
+  max_height: 608
+  max_width: 608
 
 BBoxPostProcess:
   decode:
